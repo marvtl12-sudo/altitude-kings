@@ -644,18 +644,18 @@
       const items = filter === "All" ? gallery : gallery.filter(g=>g.category===filter);
       document.getElementById("galleryGrid").innerHTML = items.map((g,i)=>`<div class="gallery-item reveal" data-lightbox="${escapeHTML(g.id)}" tabindex="0" role="button" aria-label="View photo: ${escapeHTML(g.alt||g.category)}"><img src="${escapeHTML(g.image)}" alt="${escapeHTML(g.alt||g.category)}" loading="lazy"></div>`).join("");
       observeReveals();
-    }
+    }let revealObserver; renderAll();
     function renderAll() { renderTreks(); renderExpeditions(); renderUpcoming(); renderGallery(); }
-    renderAll();
-    document.getElementById("year").textContent = new Date().getFullYear();
+   let revealObserver; renderAll();
+    document.getElementById("year").textContent = new Date().getFullYear();document.getElementById("year")...
 
     const header = document.getElementById("header");
     window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>30),{passive:true});
     const menuToggle = document.getElementById("menuToggle"), navLinks = document.getElementById("navLinks");
     menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",open);menuToggle.textContent=open?"×":"☰";});
-    navLinks.addEventListener("click",e=>{if(e.target.closest("a")){navLinks.classList.remove("open");menuToggle.textContent="☰";menuToggle.setAttribute("aria-expanded","false");}});
+    navLinks.addEventListener("click",e=>{if(e.target.closest("a")){navLinks.classList.remove("open");menuToggle.textContent="☰";menuToggle.setAttribute("aria-expanded","false");}});navLinks.addEventListener(...)
     let revealObserver;
-    function observeReveals() {
+    function observeReveals() {function observeReveals() {
       if (!("IntersectionObserver" in window)) { document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible")); return; }
       if (!revealObserver) revealObserver = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");revealObserver.unobserve(entry.target);}}),{threshold:.1});
       document.querySelectorAll(".reveal:not(.visible)").forEach(el=>revealObserver.observe(el));
