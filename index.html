@@ -1,0 +1,782 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#18231d">
+  <meta name="description" content="Altitude Kings offers trekking, mountaineering, climbing and high-altitude expeditions across Kashmir and the Western Himalayas.">
+  <title>Altitude Kings | Kashmir Treks, Expeditions &amp; Mountain Adventures</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --forest: #1d3027;
+      --forest-deep: #14211b;
+      --ink: #202520;
+      --muted: #727971;
+      --paper: #f6f5f0;
+      --white: #fffefa;
+      --accent: #c18c5a;
+      --line: rgba(32,37,32,.12);
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: "DM Sans", sans-serif;
+      --display: "Manrope", sans-serif;
+      --shadow: 0 18px 55px rgba(23,33,27,.11);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 82px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); -webkit-font-smoothing: antialiased; }
+    body.locked { overflow: hidden; }
+    img { display: block; width: 100%; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select, textarea { font: inherit; }
+    button { cursor: pointer; }
+    .container { width: min(1180px, calc(100% - 52px)); margin-inline: auto; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 10px; color: var(--accent); font-size: 10px; font-weight: 700; letter-spacing: .22em; text-transform: uppercase; }
+    .eyebrow:before { content: ""; width: 26px; height: 1px; background: currentColor; }
+    .section { padding: 112px 0; }
+    .section-heading { max-width: 690px; margin-bottom: 42px; }
+    .section-heading h2 { margin: 15px 0 12px; font: 800 clamp(34px, 5vw, 58px)/1.05 var(--display); letter-spacing: -.055em; text-transform: uppercase; }
+    .section-heading p { color: var(--muted); font-size: 15px; line-height: 1.8; margin: 0; max-width: 560px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 49px; padding: 0 22px; border: 1px solid transparent; border-radius: 3px; background: var(--forest); color: white; font-size: 10px; font-weight: 700; letter-spacing: .15em; text-transform: uppercase; transition: .25s ease; }
+    .btn:hover { background: #2e4939; transform: translateY(-2px); box-shadow: 0 10px 25px rgba(20,33,27,.2); }
+    .btn-outline { background: transparent; border-color: rgba(255,255,255,.58); color: #fff; }
+    .btn-outline:hover { background: white; color: var(--forest); }
+    .btn-light { background: var(--white); color: var(--forest); }
+    .btn-light:hover { background: #e8e6dc; }
+    .btn-small { min-height: 40px; padding-inline: 15px; font-size: 9px; }
+    .text-link { display: inline-flex; align-items: center; gap: 9px; font-size: 10px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .text-link span { font-size: 16px; transition: transform .2s; }
+    .text-link:hover span { transform: translateX(5px); }
+    .site-header { position: fixed; z-index: 30; inset: 0 0 auto; height: 78px; color: white; transition: background .3s, box-shadow .3s; }
+    .site-header.scrolled { background: rgba(20,33,27,.95); backdrop-filter: blur(14px); box-shadow: 0 4px 24px rgba(0,0,0,.12); }
+    .nav-wrap { height: 100%; display: flex; align-items: center; justify-content: space-between; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; font: 800 15px/1 var(--display); letter-spacing: .15em; white-space: nowrap; }
+    .brand-mark { width: 31px; height: 28px; position: relative; }
+    .brand-mark svg { width: 100%; height: 100%; }
+    .nav-links { display: flex; align-items: center; gap: clamp(17px, 2.5vw, 34px); }
+    .nav-links a:not(.btn) { font-size: 10px; font-weight: 600; letter-spacing: .09em; color: rgba(255,255,255,.84); transition: color .2s; }
+    .nav-links a:not(.btn):hover { color: #fff; }
+    .nav-links .btn { min-height: 41px; padding-inline: 16px; background: var(--accent); }
+    .menu-toggle { display: none; border: 0; color: white; background: transparent; font-size: 25px; padding: 7px; }
+    .hero { min-height: 730px; height: 100svh; max-height: 1000px; position: relative; display: flex; align-items: center; color: white; overflow: hidden; background: #26352f; }
+    .hero:before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(11,20,16,.72) 0%, rgba(11,20,16,.38) 48%, rgba(11,20,16,.05) 100%), linear-gradient(0deg, rgba(11,20,16,.47), transparent 35%); z-index: 1; }
+    .hero-image { position: absolute; inset: 0; background: url("https://images.unsplash.com/photo-1464822759023-fed622ff2c3b?auto=format&fit=crop&w=2200&q=88") center 48%/cover; animation: heroZoom 18s ease-out both; }
+    @keyframes heroZoom { from { transform: scale(1.08); } to { transform: scale(1); } }
+    .hero-content { position: relative; z-index: 2; padding-top: 70px; max-width: 780px; }
+    .hero-kicker { display: flex; gap: 12px; align-items: center; color: rgba(255,255,255,.8); font-size: 10px; font-weight: 600; letter-spacing: .23em; text-transform: uppercase; }
+    .hero-kicker:before { content: ""; width: 35px; height: 1px; background: var(--accent); }
+    .hero h1 { font: 800 clamp(49px, 8vw, 100px)/.96 var(--display); letter-spacing: -.075em; margin: 23px 0 20px; text-transform: uppercase; max-width: 850px; }
+    .hero h1 span { color: #dec19e; }
+    .hero-sub { margin: 0 0 13px; font-size: 13px; font-weight: 600; letter-spacing: .13em; }
+    .hero-note { margin: 0; color: rgba(255,255,255,.73); font-size: 14px; line-height: 1.7; }
+    .hero-actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 32px; }
+    .hero-bottom { position: absolute; z-index: 2; bottom: 36px; left: 50%; transform: translateX(-50%); display: flex; align-items: center; justify-content: space-between; width: min(1180px, calc(100% - 52px)); color: rgba(255,255,255,.72); font-size: 9px; letter-spacing: .17em; text-transform: uppercase; }
+    .scroll-cue { display: flex; flex-direction: column; align-items: center; gap: 10px; }
+    .scroll-cue i { width: 1px; height: 38px; background: rgba(255,255,255,.6); position: relative; overflow: hidden; }
+    .scroll-cue i:after { content: ""; position: absolute; left: 0; top: -100%; width: 1px; height: 100%; background: var(--accent); animation: scrollLine 1.7s infinite; }
+    @keyframes scrollLine { to { top: 100%; } }
+    .hero-coordinate { display: flex; align-items: center; gap: 9px; }
+    .hero-coordinate:before { content: ""; width: 7px; height: 7px; border-radius: 50%; background: #8fbd85; box-shadow: 0 0 12px #8fbd85; }
+    .intro { background: var(--white); }
+    .intro-grid { display: grid; grid-template-columns: 1.05fr .95fr; gap: 90px; align-items: center; }
+    .intro h2 { max-width: 560px; margin: 16px 0 18px; font: 800 clamp(35px, 5vw, 61px)/1.04 var(--display); letter-spacing: -.06em; }
+    .intro-copy { color: var(--muted); font-size: 15px; line-height: 1.85; max-width: 520px; }
+    .intro-image { position: relative; height: 435px; }
+    .intro-image img { height: 100%; border-radius: 3px; }
+    .image-caption { position: absolute; left: -28px; bottom: 24px; padding: 16px 20px; background: rgba(255,254,250,.94); box-shadow: var(--shadow); font-size: 9px; letter-spacing: .14em; text-transform: uppercase; }
+    .image-caption strong { display: block; margin-top: 5px; font-size: 12px; letter-spacing: .04em; }
+    .stats { display: flex; gap: 40px; padding-top: 25px; margin-top: 30px; border-top: 1px solid var(--line); }
+    .stat strong { display: block; font: 800 28px/1.2 var(--display); letter-spacing: -.04em; }
+    .stat span { display: block; margin-top: 5px; color: var(--muted); font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .treks-section { background: var(--paper); }
+    .heading-row { display: flex; justify-content: space-between; align-items: end; gap: 24px; }
+    .heading-row .section-heading { margin-bottom: 42px; }
+    .trek-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 17px; }
+    .trek-card { background: var(--white); border-radius: 4px; overflow: hidden; box-shadow: 0 5px 22px rgba(28,38,31,.055); transition: transform .3s, box-shadow .3s; }
+    .trek-card:hover { transform: translateY(-7px); box-shadow: var(--shadow); }
+    .trek-photo { position: relative; height: 250px; overflow: hidden; cursor: pointer; }
+    .trek-photo img { height: 100%; transition: transform .7s; }
+    .trek-card:hover .trek-photo img { transform: scale(1.06); }
+    .photo-tag { position: absolute; left: 13px; top: 13px; padding: 7px 10px; background: rgba(20,33,27,.78); backdrop-filter: blur(8px); color: white; font-size: 8px; letter-spacing: .14em; text-transform: uppercase; }
+    .trek-body { padding: 19px 17px 17px; }
+    .card-location { color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .trek-body h3 { margin: 8px 0 11px; font: 800 18px/1.2 var(--display); letter-spacing: -.035em; text-transform: uppercase; }
+    .trek-specs { display: flex; flex-wrap: wrap; gap: 8px 13px; padding-bottom: 14px; border-bottom: 1px solid var(--line); color: var(--muted); font-size: 9px; }
+    .trek-specs span { display: inline-flex; align-items: center; gap: 5px; }
+    .trek-desc { min-height: 43px; color: var(--muted); font-size: 11px; line-height: 1.6; margin: 12px 0 14px; }
+    .card-bottom { display: flex; align-items: center; justify-content: space-between; gap: 7px; }
+    .price { font: 800 19px var(--display); letter-spacing: -.04em; }
+    .price small { display: block; color: var(--muted); font: 400 8px var(--sans); letter-spacing: .04em; }
+    .card-actions { display: flex; gap: 7px; }
+    .card-actions .btn { padding-inline: 10px; min-height: 36px; font-size: 8px; }
+    .card-actions .btn-outline-dark { color: var(--forest); border-color: var(--line); background: transparent; }
+    .card-actions .btn-outline-dark:hover { background: var(--forest); color: white; }
+    .beyond { position: relative; overflow: hidden; color: white; background: var(--forest-deep); }
+    .beyond:before { content: ""; position: absolute; inset: 0; opacity: .16; background: url("https://images.unsplash.com/photo-1464278533981-50106e6176b1?auto=format&fit=crop&w=1800&q=70") center/cover; }
+    .beyond .container { position: relative; }
+    .beyond .section-heading p { color: rgba(255,255,255,.63); }
+    .expedition-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 13px; }
+    .expedition-card { min-height: 240px; position: relative; padding: 22px 17px; display: flex; flex-direction: column; justify-content: end; overflow: hidden; border: 1px solid rgba(255,255,255,.17); background: rgba(255,255,255,.055); transition: background .25s, transform .25s; }
+    .expedition-card:hover { background: rgba(255,255,255,.12); transform: translateY(-5px); }
+    .expedition-card:before { content: ""; position: absolute; width: 150px; height: 150px; right: -65px; top: -60px; border: 1px solid rgba(193,140,90,.4); border-radius: 50%; }
+    .expedition-icon { position: absolute; top: 22px; left: 18px; color: var(--accent); font-size: 23px; }
+    .expedition-card h3 { position: relative; margin: 0 0 8px; font: 700 14px/1.35 var(--display); letter-spacing: .02em; text-transform: uppercase; }
+    .expedition-card p { position: relative; margin: 0; color: rgba(255,255,255,.6); font-size: 10px; line-height: 1.6; }
+    .expedition-action { margin-top: 31px; }
+    .upcoming { background: #ebeae3; }
+    .upcoming-list { display: grid; gap: 10px; }
+    .upcoming-row { display: grid; grid-template-columns: 1.7fr .9fr .8fr .8fr .9fr auto; gap: 16px; align-items: center; padding: 20px 22px; background: var(--white); border: 1px solid rgba(32,37,32,.06); transition: transform .2s, box-shadow .2s; }
+    .upcoming-row:hover { transform: translateX(4px); box-shadow: 0 8px 25px rgba(23,33,27,.07); }
+    .upcoming-name { font: 800 15px var(--display); text-transform: uppercase; }
+    .upcoming-name small { display: block; color: var(--muted); margin-top: 4px; font: 400 10px var(--sans); text-transform: none; }
+    .upcoming-cell label { display: block; margin-bottom: 5px; color: var(--muted); font-size: 8px; letter-spacing: .12em; text-transform: uppercase; }
+    .upcoming-cell strong { font-size: 11px; }
+    .seat-pill { display: inline-block; border-radius: 30px; padding: 7px 9px; color: #6b562f; background: #f4ead8; font-size: 9px; font-weight: 700; }
+    .upcoming-row .btn { min-height: 38px; padding-inline: 14px; }
+    .gallery-section { background: var(--white); }
+    .gallery-controls { display: flex; align-items: center; flex-wrap: wrap; gap: 9px; margin: -15px 0 28px; }
+    .filter-btn { border: 1px solid var(--line); border-radius: 30px; background: transparent; padding: 9px 15px; color: var(--muted); font-size: 9px; letter-spacing: .1em; text-transform: uppercase; transition: .2s; }
+    .filter-btn.active, .filter-btn:hover { background: var(--forest); border-color: var(--forest); color: white; }
+    .gallery-grid { display: grid; grid-template-columns: repeat(4, 1fr); grid-auto-rows: 190px; grid-auto-flow: dense; gap: 12px; }
+    .gallery-item { position: relative; overflow: hidden; cursor: zoom-in; background: #ddd; }
+    .gallery-item:nth-child(5n+1) { grid-row: span 2; }
+    .gallery-item:nth-child(7n+3) { grid-column: span 2; }
+    .gallery-item img { height: 100%; transition: transform .65s, filter .3s; }
+    .gallery-item:hover img { transform: scale(1.07); filter: brightness(.8); }
+    .gallery-item:after { content: "↗"; position: absolute; right: 14px; bottom: 12px; color: white; font-size: 20px; opacity: 0; transition: opacity .2s; }
+    .gallery-item:hover:after { opacity: 1; }
+    .about { background: var(--paper); }
+    .about-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 85px; align-items: center; }
+    .about-photo { position: relative; min-height: 510px; }
+    .about-photo img { height: 510px; }
+    .founder-card { position: absolute; bottom: 24px; right: -28px; min-width: 180px; padding: 17px 20px; background: var(--white); box-shadow: var(--shadow); }
+    .founder-card span { display: block; color: var(--muted); font-size: 8px; letter-spacing: .15em; text-transform: uppercase; }
+    .founder-card strong { display: block; margin-top: 5px; font: 700 18px var(--display); }
+    .about-copy h2 { margin: 16px 0; font: 800 clamp(34px, 4.4vw, 53px)/1.05 var(--display); letter-spacing: -.06em; }
+    .about-copy p { color: var(--muted); font-size: 13px; line-height: 1.9; }
+    .about-signature { display: flex; align-items: center; gap: 13px; margin-top: 25px; }
+    .signature-line { width: 35px; height: 1px; background: var(--accent); }
+    .about-signature span { font: italic 17px var(--serif); }
+    .why { background: var(--white); }
+    .why-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; }
+    .why-card { padding: 27px 21px; min-height: 190px; border: 1px solid var(--line); transition: .25s; }
+    .why-card:hover { transform: translateY(-4px); border-color: rgba(193,140,90,.5); box-shadow: 0 12px 35px rgba(23,33,27,.07); }
+    .why-icon { display: grid; place-items: center; width: 39px; height: 39px; margin-bottom: 24px; color: var(--accent); border: 1px solid rgba(193,140,90,.4); border-radius: 50%; font-size: 15px; }
+    .why-card h3 { margin: 0 0 9px; font: 700 12px var(--display); letter-spacing: .03em; text-transform: uppercase; }
+    .why-card p { margin: 0; color: var(--muted); font-size: 10px; line-height: 1.7; }
+    .conservation { min-height: 420px; display: flex; align-items: center; position: relative; color: white; background: url("https://images.unsplash.com/photo-1500530855697-b586d89ba3ee?auto=format&fit=crop&w=2000&q=85") center 52%/cover; }
+    .conservation:before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(13,24,19,.8), rgba(13,24,19,.25)); }
+    .conservation .container { position: relative; }
+    .conservation h2 { max-width: 700px; margin: 16px 0; font: 800 clamp(42px, 7vw, 78px)/.98 var(--display); letter-spacing: -.07em; }
+    .conservation p { max-width: 490px; color: rgba(255,255,255,.8); font-size: 13px; line-height: 1.8; }
+    .booking { background: var(--forest); color: white; }
+    .booking-grid { display: grid; grid-template-columns: .75fr 1.25fr; gap: 80px; align-items: start; }
+    .booking .section-heading { margin: 0; }
+    .booking .section-heading h2 { font-size: clamp(36px, 4.7vw, 57px); }
+    .booking .section-heading p { color: rgba(255,255,255,.62); }
+    .booking-aside { margin-top: 35px; padding-top: 22px; border-top: 1px solid rgba(255,255,255,.18); }
+    .booking-aside p { color: rgba(255,255,255,.72); font-size: 12px; line-height: 1.8; }
+    .booking-form { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; padding: 28px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.13); }
+    .form-field { display: flex; flex-direction: column; gap: 7px; }
+    .form-field.full { grid-column: 1/-1; }
+    .form-field label { color: rgba(255,255,255,.69); font-size: 9px; font-weight: 600; letter-spacing: .1em; text-transform: uppercase; }
+    .form-field input, .form-field select, .form-field textarea { width: 100%; min-height: 45px; padding: 12px 13px; color: white; background: rgba(255,255,255,.07); border: 1px solid rgba(255,255,255,.17); border-radius: 2px; outline: none; font-size: 12px; }
+    .form-field input:focus, .form-field select:focus, .form-field textarea:focus { border-color: var(--accent); }
+    .form-field input::placeholder, .form-field textarea::placeholder { color: rgba(255,255,255,.42); }
+    .form-field select option { color: var(--ink); background: white; }
+    .form-field textarea { min-height: 93px; resize: vertical; }
+    .form-actions { grid-column: 1/-1; display: flex; flex-wrap: wrap; gap: 10px; margin-top: 2px; }
+    .contact { background: var(--paper); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 70px; align-items: center; }
+    .contact h2 { margin: 14px 0 15px; font: 800 clamp(37px, 5vw, 58px)/1.05 var(--display); letter-spacing: -.06em; text-transform: uppercase; }
+    .contact-details { display: grid; grid-template-columns: 1fr 1fr; gap: 23px; }
+    .contact-item span { display: block; color: var(--accent); font-size: 9px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase; }
+    .contact-item strong { display: block; margin-top: 8px; font-size: 13px; font-weight: 500; line-height: 1.6; }
+    .contact-actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 28px; }
+    .contact-card { position: relative; height: 390px; overflow: hidden; }
+    .contact-card img { height: 100%; transition: transform .7s; }
+    .contact-card:hover img { transform: scale(1.04); }
+    .contact-card:after { content: "KASHMIR · WESTERN HIMALAYAS"; position: absolute; inset: auto 0 0; padding: 28px 19px 17px; background: linear-gradient(transparent, rgba(14,23,18,.75)); color: white; font-size: 9px; letter-spacing: .16em; }
+    footer { background: #121c17; color: white; padding: 46px 0 20px; }
+    .footer-top { display: flex; justify-content: space-between; gap: 32px; align-items: start; padding-bottom: 35px; border-bottom: 1px solid rgba(255,255,255,.13); }
+    .footer-brand p { max-width: 260px; color: rgba(255,255,255,.58); font-size: 11px; line-height: 1.7; }
+    .footer-links { display: flex; flex-wrap: wrap; gap: 23px; padding-top: 7px; }
+    .footer-links a { color: rgba(255,255,255,.7); font-size: 10px; }
+    .footer-links a:hover { color: white; }
+    .footer-bottom { display: flex; align-items: center; justify-content: space-between; gap: 20px; padding-top: 19px; color: rgba(255,255,255,.43); font-size: 9px; }
+    .admin-trigger { border: 0; padding: 0; color: inherit; background: transparent; font-size: inherit; }
+    .admin-trigger:hover { color: white; }
+    .modal-backdrop { position: fixed; z-index: 80; inset: 0; display: none; place-items: center; padding: 20px; background: rgba(9,15,12,.72); backdrop-filter: blur(7px); }
+    .modal-backdrop.open { display: grid; }
+    .modal { width: min(740px, 100%); max-height: min(90vh, 850px); overflow: auto; background: var(--white); color: var(--ink); box-shadow: 0 24px 90px rgba(0,0,0,.3); animation: modalIn .25s ease; }
+    @keyframes modalIn { from { opacity: 0; transform: translateY(15px); } to { opacity: 1; transform: translateY(0); } }
+    .modal-head { position: sticky; top: 0; z-index: 2; display: flex; justify-content: space-between; align-items: center; padding: 17px 20px; background: var(--white); border-bottom: 1px solid var(--line); }
+    .modal-head strong { font: 800 14px var(--display); letter-spacing: .08em; text-transform: uppercase; }
+    .modal-close { width: 32px; height: 32px; border: 1px solid var(--line); background: transparent; font-size: 20px; line-height: 1; }
+    .modal-content { padding: 22px; }
+    .detail-image { height: 310px; margin-bottom: 20px; }
+    .detail-image img { height: 100%; }
+    .detail-content h2 { margin: 8px 0 10px; font: 800 30px var(--display); letter-spacing: -.05em; text-transform: uppercase; }
+    .detail-content p { color: var(--muted); font-size: 13px; line-height: 1.8; }
+    .detail-stats { display: flex; flex-wrap: wrap; gap: 20px; padding: 13px 0; margin: 15px 0; border-block: 1px solid var(--line); font-size: 11px; }
+    .lightbox-image { max-height: 72vh; object-fit: contain; background: #111; }
+    .admin-login { max-width: 390px; margin: auto; }
+    .admin-login p { color: var(--muted); font-size: 12px; line-height: 1.6; }
+    .admin-login .form-field label { color: var(--ink); }
+    .admin-login input { color: var(--ink); background: white; border-color: var(--line); }
+    .admin-tabs { display: flex; flex-wrap: wrap; gap: 7px; margin-bottom: 20px; }
+    .admin-tab { padding: 9px 12px; border: 1px solid var(--line); background: transparent; font-size: 9px; letter-spacing: .08em; text-transform: uppercase; }
+    .admin-tab.active { color: white; background: var(--forest); border-color: var(--forest); }
+    .admin-editor { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-bottom: 22px; padding: 17px; background: #f2f1eb; }
+    .admin-editor .form-field label { color: var(--muted); }
+    .admin-editor input, .admin-editor select, .admin-editor textarea { color: var(--ink); background: white; border-color: var(--line); min-height: 39px; }
+    .admin-editor .form-field.full { grid-column: 1/-1; }
+    .admin-list { display: grid; gap: 8px; }
+    .admin-list-row { display: flex; align-items: center; justify-content: space-between; gap: 12px; padding: 11px 12px; border: 1px solid var(--line); font-size: 11px; }
+    .admin-list-row small { display: block; color: var(--muted); margin-top: 3px; }
+    .admin-list-row button { border: 1px solid #e2b3a9; background: transparent; color: #a44839; padding: 7px 9px; font-size: 9px; }
+    .booking-admin { display: grid; gap: 10px; }
+    .booking-admin-card { padding: 14px; border: 1px solid var(--line); font-size: 11px; line-height: 1.7; }
+    .booking-admin-card strong { font: 700 13px var(--display); }
+    .toast { position: fixed; z-index: 100; left: 50%; bottom: 25px; transform: translate(-50%, 20px); opacity: 0; pointer-events: none; padding: 12px 18px; color: white; background: var(--forest); box-shadow: var(--shadow); font-size: 12px; transition: .25s; }
+    .toast.show { opacity: 1; transform: translate(-50%, 0); }
+    .reveal { opacity: 0; transform: translateY(24px); transition: opacity .7s ease, transform .7s ease; }
+    .reveal.visible { opacity: 1; transform: translateY(0); }
+    @media (max-width: 1000px) {
+      .nav-links { gap: 15px; }
+      .nav-links a:not(.btn) { font-size: 9px; }
+      .nav-links .btn { padding-inline: 12px; font-size: 8px; }
+      .trek-grid { grid-template-columns: repeat(2, 1fr); }
+      .expedition-grid { grid-template-columns: repeat(3, 1fr); }
+      .intro-grid, .about-grid { gap: 55px; }
+      .upcoming-row { grid-template-columns: 1.4fr .8fr .7fr .8fr auto; }
+      .upcoming-row .upcoming-cell:nth-child(4) { display: none; }
+    }
+    @media (max-width: 760px) {
+      .container { width: min(100% - 36px, 560px); }
+      .section { padding: 78px 0; }
+      .site-header { height: 68px; }
+      .brand { font-size: 13px; }
+      .menu-toggle { display: block; }
+      .nav-links { position: absolute; top: 68px; left: 0; right: 0; display: none; flex-direction: column; align-items: stretch; gap: 0; padding: 10px 20px 20px; background: rgba(20,33,27,.98); }
+      .nav-links.open { display: flex; }
+      .nav-links a:not(.btn) { padding: 14px 5px; border-bottom: 1px solid rgba(255,255,255,.1); font-size: 11px; }
+      .nav-links .btn { margin-top: 14px; min-height: 46px; }
+      .hero { min-height: 690px; height: 92svh; max-height: 900px; }
+      .hero-image { background-position: 56% center; }
+      .hero:before { background: linear-gradient(90deg, rgba(11,20,16,.69), rgba(11,20,16,.26)), linear-gradient(0deg, rgba(11,20,16,.5), transparent 50%); }
+      .hero-content { padding-top: 40px; }
+      .hero h1 { font-size: clamp(48px, 12vw, 75px); }
+      .hero-bottom { width: calc(100% - 36px); bottom: 23px; }
+      .hero-coordinate { font-size: 8px; }
+      .intro-grid, .about-grid, .booking-grid, .contact-grid { grid-template-columns: 1fr; gap: 38px; }
+      .intro-image { height: 340px; }
+      .image-caption { left: 12px; }
+      .stats { gap: 22px; justify-content: space-between; }
+      .stat strong { font-size: 23px; }
+      .stat span { font-size: 8px; }
+      .heading-row { display: block; }
+      .heading-row > .text-link { margin-top: -25px; margin-bottom: 30px; }
+      .trek-grid { grid-template-columns: 1fr 1fr; gap: 11px; }
+      .trek-photo { height: 185px; }
+      .trek-body { padding: 14px 12px; }
+      .trek-body h3 { font-size: 14px; }
+      .trek-desc { font-size: 10px; min-height: 50px; }
+      .trek-specs { gap: 7px; font-size: 8px; }
+      .price { font-size: 16px; }
+      .card-actions { flex-direction: column; }
+      .card-actions .btn { min-height: 32px; }
+      .expedition-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .expedition-card { min-height: 190px; padding: 16px 13px; }
+      .expedition-card h3 { font-size: 12px; }
+      .upcoming-row { grid-template-columns: 1fr auto; gap: 12px; padding: 16px; }
+      .upcoming-row .upcoming-cell { display: block !important; }
+      .upcoming-row .upcoming-cell:nth-child(2), .upcoming-row .upcoming-cell:nth-child(3), .upcoming-row .upcoming-cell:nth-child(4), .upcoming-row .upcoming-cell:nth-child(5) { grid-column: 1; }
+      .upcoming-row .upcoming-cell:nth-child(2) { grid-row: 2; }
+      .upcoming-row .upcoming-cell:nth-child(3) { grid-row: 3; }
+      .upcoming-row .upcoming-cell:nth-child(4) { grid-row: 4; }
+      .upcoming-row .upcoming-cell:nth-child(5) { grid-row: 5; }
+      .upcoming-row > .btn { grid-column: 2; grid-row: 2 / span 4; }
+      .upcoming-cell label { display: inline; margin-right: 6px; }
+      .gallery-grid { grid-template-columns: repeat(2, 1fr); grid-auto-rows: 155px; gap: 8px; }
+      .gallery-item:nth-child(5n+1) { grid-row: span 2; }
+      .gallery-item:nth-child(7n+3) { grid-column: span 1; }
+      .about-photo, .about-photo img { min-height: 370px; height: 370px; }
+      .founder-card { right: 10px; }
+      .why-grid { grid-template-columns: 1fr 1fr; gap: 9px; }
+      .why-card { padding: 20px 15px; min-height: 175px; }
+      .why-icon { margin-bottom: 17px; }
+      .conservation { min-height: 390px; }
+      .booking-form { padding: 18px; gap: 12px; }
+      .contact-card { height: 300px; }
+      .footer-top { flex-direction: column; }
+      .footer-links { gap: 15px; }
+      .footer-bottom { align-items: start; flex-direction: column; }
+      .admin-editor { grid-template-columns: 1fr; }
+      .admin-editor .form-field.full { grid-column: auto; }
+    }
+    @media (max-width: 390px) {
+      .container { width: calc(100% - 28px); }
+      .hero h1 { font-size: 45px; }
+      .hero-bottom { width: calc(100% - 28px); }
+      .hero-coordinate { max-width: 135px; line-height: 1.5; }
+      .hero-actions .btn { padding-inline: 13px; font-size: 9px; }
+      .trek-grid { grid-template-columns: 1fr; }
+      .trek-photo { height: 225px; }
+      .trek-desc { min-height: 0; }
+      .card-actions { flex-direction: row; }
+      .booking-form { grid-template-columns: 1fr; }
+      .form-field.full, .form-actions { grid-column: auto; }
+      .contact-details { grid-template-columns: 1fr 1fr; gap: 17px; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *:before, *:after { scroll-behavior: auto !important; animation-duration: .01ms !important; transition-duration: .01ms !important; }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="header">
+    <div class="container nav-wrap">
+      <a class="brand" href="#home" aria-label="Altitude Kings home">
+        <span class="brand-mark" aria-hidden="true">
+          <svg viewBox="0 0 40 34" fill="none"><path d="M2 31 15.5 7l6.3 11 4.4-7L38 31H2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m11.2 14.6 4.3 2.3 4.6-2.1m4.9 4.3 2.4 1.3 2.5-1.2M7 31l7.2-10.7 4.2 6.2" stroke="currentColor" stroke-width="1.2"/></svg>
+        </span>
+        <span>ALTITUDE KINGS</span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Open navigation menu" aria-expanded="false">☰</button>
+      <nav class="nav-links" id="navLinks" aria-label="Main navigation">
+        <a href="#home">Home</a><a href="#treks">Treks</a><a href="#expeditions">Expeditions</a><a href="#gallery">Gallery</a><a href="#about">About Us</a><a href="#contact">Contact</a>
+        <a href="#booking" class="btn">Book your adventure <span>↗</span></a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="home">
+      <div class="hero-image" role="img" aria-label="Dramatic Himalayan mountain range"></div>
+      <div class="container hero-content">
+        <div class="hero-kicker">Kashmir · Western Himalayas</div>
+        <h1>Explore Kashmir<br><span>Beyond the</span><br>Ordinary.</h1>
+        <p class="hero-sub">Treks &nbsp;•&nbsp; Expeditions &nbsp;•&nbsp; Climbing &nbsp;•&nbsp; Mountain Adventures</p>
+        <p class="hero-note">Discover the Western Himalayas with Altitude Kings.</p>
+        <div class="hero-actions">
+          <a href="#treks" class="btn btn-light">Explore treks <span>↗</span></a>
+          <a href="#booking" class="btn btn-outline">Book your adventure <span>↗</span></a>
+        </div>
+      </div>
+      <div class="hero-bottom">
+        <span class="hero-coordinate">34°05′N &nbsp; 74°50′E — Kashmir, India</span>
+        <a href="#intro" class="scroll-cue"><span>Scroll to explore</span><i></i></a>
+        <span>Find your higher ground</span>
+      </div>
+    </section>
+
+    <section class="section intro" id="intro">
+      <div class="container intro-grid">
+        <div class="reveal">
+          <span class="eyebrow">A little closer to wild</span>
+          <h2>The mountains<br>are calling.</h2>
+          <p class="intro-copy">From hidden alpine lakes to high-altitude summits, Altitude Kings takes you deeper into the mountains of Kashmir. Find your own kind of extraordinary, guided by people who call these mountains home.</p>
+          <div class="stats">
+            <div class="stat"><strong>10+</strong><span>Mountain adventures</span></div>
+            <div class="stat"><strong>100+</strong><span>Happy adventurers</span></div>
+            <div class="stat"><strong>01</strong><span>Wild Kashmir</span></div>
+          </div>
+        </div>
+        <div class="intro-image reveal">
+          <img src="https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=85" alt="Alpine trail through a wild mountain valley" loading="lazy">
+          <div class="image-caption">The Western Himalayas<strong>Wild by nature. Close to heart.</strong></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section treks-section" id="treks">
+      <div class="container">
+        <div class="heading-row">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Find your trail</span>
+            <h2>Explore our treks</h2>
+            <p>Discover some of the most beautiful trails across Kashmir. Small groups, local guides and memories that stay with you.</p>
+          </div>
+          <a class="text-link" href="#booking">Find your adventure <span>→</span></a>
+        </div>
+        <div class="trek-grid" id="trekGrid"></div>
+      </div>
+    </section>
+
+    <section class="section beyond" id="expeditions">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Go further</span>
+          <h2>Beyond trekking</h2>
+          <p>For those who want to go higher, deeper and further. Take on a new challenge with the guidance and care of our mountain team.</p>
+        </div>
+        <div class="expedition-grid" id="expeditionGrid"></div>
+        <div class="expedition-action"><a href="#booking" class="btn btn-light">Explore expeditions <span>↗</span></a></div>
+      </div>
+    </section>
+
+    <section class="section upcoming" id="upcoming">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">The next call of the mountains</span>
+          <h2>Upcoming adventures</h2>
+          <p>Good trails are better shared. Find a date, gather your people and meet us in the mountains.</p>
+        </div>
+        <div class="upcoming-list" id="upcomingList"></div>
+      </div>
+    </section>
+
+    <section class="section gallery-section" id="gallery">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">The moments in between</span>
+          <h2>Our adventures<br>through our lens</h2>
+          <p>Quiet mornings, long trails and the kind of views you have to see for yourself.</p>
+        </div>
+        <div class="gallery-controls" id="galleryFilters"></div>
+        <div class="gallery-grid" id="galleryGrid"></div>
+      </div>
+    </section>
+
+    <section class="section about" id="about">
+      <div class="container about-grid">
+        <div class="about-photo reveal">
+          <img src="https://images.unsplash.com/photo-1551632811-561732d1e306?auto=format&fit=crop&w=1100&q=85" alt="Mountain guide leading a group along a Himalayan trail" loading="lazy">
+          <div class="founder-card"><span>Founder &amp; mountain guide</span><strong>Owais</strong></div>
+        </div>
+        <div class="about-copy reveal">
+          <span class="eyebrow">Our story</span>
+          <h2>Built by mountains.<br>Guided by experience.</h2>
+          <p>Altitude Kings was born from a deep love for Kashmir's mountains and the belief that the best journeys are the ones that bring you closer to a place—and to yourself.</p>
+          <p>Founded by Owais, we are a Kashmir-based team of local mountain lovers, outdoor professionals and thoughtful hosts. We know these trails because they are part of our home. Every trip is planned with care, led with experience and shaped around the people who join us.</p>
+          <div class="about-signature"><i class="signature-line"></i><span>Explore Kashmir beyond the ordinary.</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section why">
+      <div class="container">
+        <div class="section-heading reveal">
+          <span class="eyebrow">The Altitude Kings difference</span>
+          <h2>Good people.<br>Real mountains.</h2>
+        </div>
+        <div class="why-grid">
+          <article class="why-card reveal"><div class="why-icon">⌖</div><h3>Local mountain knowledge</h3><p>Our homegrown guides bring genuine local insight to every trail and every turn.</p></article>
+          <article class="why-card reveal"><div class="why-icon">↗</div><h3>Small group experiences</h3><p>Thoughtful group sizes make room for personal attention and a deeper connection.</p></article>
+          <article class="why-card reveal"><div class="why-icon">♧</div><h3>Adventure with responsibility</h3><p>We respect the mountains, support local communities and tread lightly.</p></article>
+          <article class="why-card reveal"><div class="why-icon">⌁</div><h3>Real mountain experiences</h3><p>Come for the views. Stay for the stories, the people and the unexpected moments.</p></article>
+        </div>
+      </div>
+    </section>
+
+    <section class="conservation">
+      <div class="container reveal">
+        <span class="eyebrow">The mountains give us everything</span>
+        <h2>Leave only<br>footprints.</h2>
+        <p>We believe a great adventure should leave the mountains as beautiful as we found them. We carry out what we carry in, respect local ways of life and make responsible choices along the trail.</p>
+        <a href="#contact" class="text-link">Adventure with care <span>→</span></a>
+      </div>
+    </section>
+
+    <section class="section booking" id="booking">
+      <div class="container booking-grid">
+        <div>
+          <div class="section-heading reveal">
+            <span class="eyebrow">Let's make it happen</span>
+            <h2>Your next adventure starts here.</h2>
+            <p>Tell us what you have in mind. Our team will help you find the right trail, dates and details.</p>
+          </div>
+          <div class="booking-aside">
+            <span class="eyebrow">Personal, local, considered</span>
+            <p>Not sure where to start? Share a little about yourself and we'll help you plan a Kashmir adventure that's right for you.</p>
+          </div>
+        </div>
+        <form class="booking-form" id="bookingForm">
+          <div class="form-field"><label for="fullName">Full name *</label><input id="fullName" name="name" required placeholder="Your name" autocomplete="name"></div>
+          <div class="form-field"><label for="phone">Phone number *</label><input id="phone" name="phone" required type="tel" placeholder="+91" autocomplete="tel"></div>
+          <div class="form-field"><label for="email">Email address</label><input id="email" name="email" type="email" placeholder="you@example.com" autocomplete="email"></div>
+          <div class="form-field"><label for="tripSelect">Trek / expedition *</label><select id="tripSelect" name="trip" required><option value="">Choose your adventure</option></select></div>
+          <div class="form-field"><label for="preferredDate">Preferred date</label><input id="preferredDate" name="date" type="date"></div>
+          <div class="form-field"><label for="people">Number of people</label><select name="people" id="people"><option>1 person</option><option>2 people</option><option>3 people</option><option>4 people</option><option>5+ people</option></select></div>
+          <div class="form-field full"><label for="message">A little more about your plans</label><textarea id="message" name="message" placeholder="Tell us about your experience, questions or anything else..."></textarea></div>
+          <div class="form-actions"><button type="submit" class="btn btn-light">Send booking request <span>↗</span></button><button type="button" class="btn btn-outline" id="whatsappBooking">Book via WhatsApp <span>↗</span></button></div>
+        </form>
+      </div>
+    </section>
+
+    <section class="section contact" id="contact">
+      <div class="container contact-grid">
+        <div class="reveal">
+          <span class="eyebrow">Your mountain story starts with a hello</span>
+          <h2>Let's plan your adventure.</h2>
+          <div class="contact-details">
+            <div class="contact-item"><span>Based in</span><strong>Kashmir, India<br>Western Himalayas</strong></div>
+            <div class="contact-item"><span>Call / WhatsApp</span><strong><a href="https://wa.me/919000000000" target="_blank" rel="noopener">+91 90000 00000</a></strong></div>
+            <div class="contact-item"><span>Email</span><strong><a href="mailto:hello@altitudekings.com">hello@altitudekings.com</a></strong></div>
+            <div class="contact-item"><span>Follow along</span><strong><a href="https://instagram.com/" target="_blank" rel="noopener">@altitudekings</a></strong></div>
+          </div>
+          <div class="contact-actions">
+            <a href="https://instagram.com/" target="_blank" rel="noopener" class="btn">Instagram <span>↗</span></a>
+            <a href="https://wa.me/919000000000" target="_blank" rel="noopener" class="btn btn-outline-dark btn">WhatsApp <span>↗</span></a>
+          </div>
+        </div>
+        <div class="contact-card reveal">
+          <img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=1100&q=85" alt="Starlit mountain peaks in the Himalayas" loading="lazy">
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <a class="brand" href="#home"><span class="brand-mark"><svg viewBox="0 0 40 34" fill="none"><path d="M2 31 15.5 7l6.3 11 4.4-7L38 31H2Z" stroke="currentColor" stroke-width="1.6" stroke-linejoin="round"/><path d="m11.2 14.6 4.3 2.3 4.6-2.1" stroke="currentColor" stroke-width="1.2"/></svg></span>ALTITUDE KINGS</a>
+          <p>Explore Kashmir beyond the ordinary. Treks, expeditions and mountain adventures in the Western Himalayas.</p>
+        </div>
+        <nav class="footer-links" aria-label="Footer navigation">
+          <a href="#treks">Treks</a><a href="#expeditions">Expeditions</a><a href="#gallery">Gallery</a><a href="#about">Our story</a><a href="#contact">Contact</a><a href="#booking">Book an adventure</a>
+        </nav>
+      </div>
+      <div class="footer-bottom">
+        <span>© <span id="year"></span> Altitude Kings. Made for the mountains.</span>
+        <span>Explore Kashmir Beyond the Ordinary.</span>
+        <button class="admin-trigger" id="adminTrigger">Team login</button>
+      </div>
+    </div>
+  </footer>
+
+  <div class="modal-backdrop" id="modalBackdrop" role="dialog" aria-modal="true" aria-label="Website dialog">
+    <div class="modal">
+      <div class="modal-head"><strong id="modalTitle">Details</strong><button class="modal-close" id="modalClose" aria-label="Close dialog">×</button></div>
+      <div class="modal-content" id="modalContent"></div>
+    </div>
+  </div>
+  <div class="toast" id="toast" role="status"></div>
+
+  <script>
+    const img = (id, width = 900) => `https://images.unsplash.com/${id}?auto=format&fit=crop&w=${width}&q=82`;
+    const initialTreks = [
+      {id:"t1",name:"Kapran Sarbal Trek",location:"Kapran · Kashmir",duration:"1 day",difficulty:"Easy",altitude:"2,850 m",price:"₹650",description:"A refreshing day out through lush meadows and dramatic mountain scenery in the heart of Kashmir.",image:img("photo-1464822759023-fed622ff2c3b")},
+      {id:"t2",name:"Warwan Valley Expedition",location:"Warwan Valley · Kashmir",duration:"7 days",difficulty:"Moderate",altitude:"4,200 m",price:"₹24,500",description:"Follow remote trails into a breathtaking valley of rivers, high passes and unforgettable village life.",image:img("photo-1472396961693-142e6e269027")},
+      {id:"t3",name:"Alpine Lakes Expedition",location:"Kashmir Great Lakes",duration:"7 days",difficulty:"Moderate",altitude:"4,200 m",price:"₹21,000",description:"A journey across high mountain passes to brilliant alpine lakes tucked beneath rugged Himalayan peaks.",image:img("photo-1500530855697-b586d89ba3ee")},
+      {id:"t4",name:"Sarbal Lake Trek",location:"Pahalgam · Kashmir",duration:"2 days",difficulty:"Moderate",altitude:"3,650 m",price:"₹5,500",description:"Climb through pine-scented forests to a serene mountain lake framed by the peaks of Kashmir.",image:img("photo-1519681393784-d120267933ba")}
+    ];
+    const initialExpeditions = [
+      {id:"e1",name:"Mountaineering",description:"Build your skills and take on high-altitude objectives with experienced mountain leaders.",icon:"△"},
+      {id:"e2",name:"Alpinism",description:"Technical mountain routes for those ready to move beyond the established trail.",icon:"⌁"},
+      {id:"e3",name:"Rock climbing",description:"Find your foothold on Kashmir's beautiful natural rock faces.",icon:"◈"},
+      {id:"e4",name:"Ice climbing",description:"A winter challenge for confident climbers seeking frozen lines and new skills.",icon:"❄"},
+      {id:"e5",name:"High-altitude expeditions",description:"Plan a bigger Himalayan objective with thoughtful preparation and local support.",icon:"↗"}
+    ];
+    const initialUpcoming = [
+      {id:"u1",name:"Kapran Sarbal",date:"Sunday, 22 June 2025",duration:"1 Day",price:"₹650",seats:"4 Seats Left",difficulty:"Easy"},
+      {id:"u2",name:"Sarbal Lake Trek",date:"Saturday, 28 June 2025",duration:"2 Days",price:"₹5,500",seats:"6 Seats Left",difficulty:"Moderate"},
+      {id:"u3",name:"Alpine Lakes Expedition",date:"Monday, 07 July 2025",duration:"7 Days",price:"₹21,000",seats:"5 Seats Left",difficulty:"Moderate"}
+    ];
+    const initialGallery = [
+      {id:"g1",category:"Treks",image:img("photo-1464822759023-fed622ff2c3b",900),alt:"Sunlit Himalayan peaks"},
+      {id:"g2",category:"Mountaineering",image:img("photo-1519681393784-d120267933ba",900),alt:"Snowy mountain at dusk"},
+      {id:"g3",category:"Treks",image:img("photo-1472396961693-142e6e269027",900),alt:"Green mountain wilderness"},
+      {id:"g4",category:"Expeditions",image:img("photo-1464278533981-50106e6176b1",900),alt:"Alpine mountain landscape"},
+      {id:"g5",category:"Treks",image:img("photo-1500530855697-b586d89ba3ee",900),alt:"Mountain lake and dramatic clouds"},
+      {id:"g6",category:"Mountaineering",image:img("photo-1454496522488-7a8e488e8606",900),alt:"Himalayan peak"},
+      {id:"g7",category:"Expeditions",image:img("photo-1551632811-561732d1e306",900),alt:"Trekking group on a mountain trail"},
+      {id:"g8",category:"Treks",image:img("photo-1511497584788-876760111969",900),alt:"Sunlight through a forest"}
+    ];
+    function loadData(key, initial) {
+      try { const val = JSON.parse(localStorage.getItem("ak_" + key)); return Array.isArray(val) ? val : initial; }
+      catch { return initial; }
+    }
+    let treks = loadData("treks", initialTreks);
+    let expeditions = loadData("expeditions", initialExpeditions);
+    let upcoming = loadData("upcoming", initialUpcoming);
+    let gallery = loadData("gallery", initialGallery);
+    let bookings = loadData("bookings", []);
+    const save = key => localStorage.setItem("ak_" + key, JSON.stringify({treks,expeditions,upcoming,gallery,bookings}[key]));
+    const waNumber = "919000000000";
+
+    function escapeHTML(value="") {
+      return String(value).replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+    }
+    function renderTreks() {
+      const grid = document.getElementById("trekGrid");
+      grid.innerHTML = treks.map(t => `<article class="trek-card reveal">
+        <div class="trek-photo" role="button" tabindex="0" data-detail="${escapeHTML(t.id)}"><img src="${escapeHTML(t.image)}" alt="${escapeHTML(t.name)}" loading="lazy"><span class="photo-tag">${escapeHTML(t.difficulty)}</span></div>
+        <div class="trek-body"><div class="card-location">${escapeHTML(t.location)}</div><h3>${escapeHTML(t.name)}</h3>
+          <div class="trek-specs"><span>◷ ${escapeHTML(t.duration)}</span><span>▲ ${escapeHTML(t.altitude)}</span><span>⌁ ${escapeHTML(t.difficulty)}</span></div>
+          <p class="trek-desc">${escapeHTML(t.description)}</p>
+          <div class="card-bottom"><div class="price">${escapeHTML(t.price)}<small>per person</small></div><div class="card-actions"><button class="btn btn-outline-dark" data-detail="${escapeHTML(t.id)}">View trek</button><button class="btn" data-book="${escapeHTML(t.name)}">Book now</button></div></div>
+        </div></article>`).join("");
+      observeReveals();
+      renderTripOptions();
+    }
+    function renderExpeditions() {
+      document.getElementById("expeditionGrid").innerHTML = expeditions.map(e => `<article class="expedition-card reveal"><span class="expedition-icon">${escapeHTML(e.icon||"△")}</span><h3>${escapeHTML(e.name)}</h3><p>${escapeHTML(e.description)}</p></article>`).join("");
+      observeReveals();
+      renderTripOptions();
+    }
+    function renderUpcoming() {
+      document.getElementById("upcomingList").innerHTML = upcoming.map(u => `<article class="upcoming-row reveal">
+        <div class="upcoming-name">${escapeHTML(u.name)}<small>Kashmir · Western Himalayas</small></div>
+        <div class="upcoming-cell"><label>Date</label><strong>${escapeHTML(u.date)}</strong></div>
+        <div class="upcoming-cell"><label>Duration</label><strong>${escapeHTML(u.duration)}</strong></div>
+        <div class="upcoming-cell"><label>Difficulty</label><strong>${escapeHTML(u.difficulty)}</strong></div>
+        <div class="upcoming-cell"><label>Price · Available</label><strong>${escapeHTML(u.price)} &nbsp; <span class="seat-pill">${escapeHTML(u.seats)}</span></strong></div>
+        <button class="btn btn-small" data-book="${escapeHTML(u.name)}">Book now</button>
+      </article>`).join("");
+      observeReveals();
+    }
+    function renderTripOptions() {
+      const select = document.getElementById("tripSelect");
+      if (!select) return;
+      const current = select.value;
+      const options = [...treks.map(t=>t.name), ...expeditions.map(e=>e.name)];
+      select.innerHTML = `<option value="">Choose your adventure</option>${options.map(x=>`<option>${escapeHTML(x)}</option>`).join("")}`;
+      if (options.includes(current)) select.value = current;
+    }
+    const categories = ["All","Treks","Mountaineering","Expeditions"];
+    function renderGallery(filter="All") {
+      document.getElementById("galleryFilters").innerHTML = categories.map(c=>`<button class="filter-btn ${filter===c?"active":""}" data-filter="${c}">${c}</button>`).join("");
+      const items = filter === "All" ? gallery : gallery.filter(g=>g.category===filter);
+      document.getElementById("galleryGrid").innerHTML = items.map((g,i)=>`<div class="gallery-item reveal" data-lightbox="${escapeHTML(g.id)}" tabindex="0" role="button" aria-label="View photo: ${escapeHTML(g.alt||g.category)}"><img src="${escapeHTML(g.image)}" alt="${escapeHTML(g.alt||g.category)}" loading="lazy"></div>`).join("");
+      observeReveals();
+    }
+    function renderAll() { renderTreks(); renderExpeditions(); renderUpcoming(); renderGallery(); }
+    renderAll();
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const header = document.getElementById("header");
+    window.addEventListener("scroll",()=>header.classList.toggle("scrolled",window.scrollY>30),{passive:true});
+    const menuToggle = document.getElementById("menuToggle"), navLinks = document.getElementById("navLinks");
+    menuToggle.addEventListener("click",()=>{const open=navLinks.classList.toggle("open");menuToggle.setAttribute("aria-expanded",open);menuToggle.textContent=open?"×":"☰";});
+    navLinks.addEventListener("click",e=>{if(e.target.closest("a")){navLinks.classList.remove("open");menuToggle.textContent="☰";menuToggle.setAttribute("aria-expanded","false");}});
+    let revealObserver;
+    function observeReveals() {
+      if (!("IntersectionObserver" in window)) { document.querySelectorAll(".reveal").forEach(el=>el.classList.add("visible")); return; }
+      if (!revealObserver) revealObserver = new IntersectionObserver(entries=>entries.forEach(entry=>{if(entry.isIntersecting){entry.target.classList.add("visible");revealObserver.unobserve(entry.target);}}),{threshold:.1});
+      document.querySelectorAll(".reveal:not(.visible)").forEach(el=>revealObserver.observe(el));
+    }
+    observeReveals();
+
+    const backdrop = document.getElementById("modalBackdrop");
+    const modalTitle = document.getElementById("modalTitle"), modalContent = document.getElementById("modalContent");
+    function openModal(title, content) {
+      modalTitle.textContent = title; modalContent.innerHTML = content;
+      backdrop.classList.add("open"); document.body.classList.add("locked");
+      document.getElementById("modalClose").focus();
+    }
+    function closeModal() { backdrop.classList.remove("open"); document.body.classList.remove("locked"); }
+    document.getElementById("modalClose").addEventListener("click",closeModal);
+    backdrop.addEventListener("click",e=>{if(e.target===backdrop)closeModal();});
+    document.addEventListener("keydown",e=>{if(e.key==="Escape")closeModal();});
+    function showTrek(id) {
+      const t=treks.find(item=>item.id===id); if(!t)return;
+      openModal(t.name,`<div class="detail-content"><div class="detail-image"><img src="${escapeHTML(t.image)}" alt="${escapeHTML(t.name)}"></div><span class="eyebrow">${escapeHTML(t.location)}</span><h2>${escapeHTML(t.name)}</h2><div class="detail-stats"><span>◷ ${escapeHTML(t.duration)}</span><span>⌁ ${escapeHTML(t.difficulty)}</span><span>▲ ${escapeHTML(t.altitude)}</span><strong>${escapeHTML(t.price)} / person</strong></div><p>${escapeHTML(t.description)}</p><a href="#booking" class="btn" data-modal-book="${escapeHTML(t.name)}">Plan this trek <span>↗</span></a></div>`);
+    }
+    function showPhoto(id) {
+      const item=gallery.find(g=>g.id===id); if(!item)return;
+      openModal(item.alt||"Adventure gallery",`<img class="lightbox-image" src="${escapeHTML(item.image)}" alt="${escapeHTML(item.alt||item.category)}"><p style="margin:12px 0 0;color:#727971;font-size:11px;text-transform:uppercase;letter-spacing:.12em">${escapeHTML(item.category)}</p>`);
+    }
+    document.addEventListener("click",e=>{
+      const detail=e.target.closest("[data-detail]"); if(detail){showTrek(detail.dataset.detail);return;}
+      const book=e.target.closest("[data-book]"); if(book){const select=document.getElementById("tripSelect");select.value=[...select.options].some(o=>o.value===book.dataset.book)?book.dataset.book:"";closeModal();document.getElementById("booking").scrollIntoView({behavior:"smooth"});setTimeout(()=>document.getElementById("fullName").focus({preventScroll:true}),600);return;}
+      const modalBook=e.target.closest("[data-modal-book]"); if(modalBook){const name=modalBook.dataset.modalBook;closeModal();document.getElementById("tripSelect").value=name;document.getElementById("booking").scrollIntoView({behavior:"smooth"});return;}
+      const filter=e.target.closest("[data-filter]");if(filter){renderGallery(filter.dataset.filter);return;}
+      const photo=e.target.closest("[data-lightbox]");if(photo){showPhoto(photo.dataset.lightbox);return;}
+    });
+    document.addEventListener("keydown",e=>{
+      if((e.key==="Enter"||e.key===" ")&&e.target.matches("[data-lightbox],.trek-photo")){e.preventDefault();e.target.click();}
+    });
+    function toast(message) {
+      const node=document.getElementById("toast");node.textContent=message;node.classList.add("show");
+      setTimeout(()=>node.classList.remove("show"),3200);
+    }
+    document.getElementById("bookingForm").addEventListener("submit",e=>{
+      e.preventDefault();
+      const data=Object.fromEntries(new FormData(e.currentTarget).entries());
+      data.createdAt=new Date().toISOString();data.id="b"+Date.now();
+      bookings.unshift(data);save("bookings");
+      const text=`Hello Altitude Kings! I'd like to request an adventure booking.%0A%0AName: ${encodeURIComponent(data.name)}%0APhone: ${encodeURIComponent(data.phone)}%0AEmail: ${encodeURIComponent(data.email||"Not provided")}%0AAdventure: ${encodeURIComponent(data.trip)}%0APreferred date: ${encodeURIComponent(data.date||"Flexible")}%0APeople: ${encodeURIComponent(data.people||"1 person")}%0AMessage: ${encodeURIComponent(data.message||"")}`;
+      e.currentTarget.reset();toast("Thanks! Your request is saved. Opening WhatsApp…");
+      window.open(`https://wa.me/${waNumber}?text=${text}`,"_blank","noopener");
+    });
+    document.getElementById("whatsappBooking").addEventListener("click",()=>{
+      const form=document.getElementById("bookingForm");
+      const data=Object.fromEntries(new FormData(form).entries());
+      const msg=`Hello Altitude Kings! I'd like to plan an adventure.%0AName: ${encodeURIComponent(data.name||"")}%0APhone: ${encodeURIComponent(data.phone||"")}%0AAdventure: ${encodeURIComponent(data.trip||"Not decided yet")}%0ADate: ${encodeURIComponent(data.date||"Flexible")}%0APeople: ${encodeURIComponent(data.people||"")}%0AMessage: ${encodeURIComponent(data.message||"")}`;
+      window.open(`https://wa.me/${waNumber}?text=${msg}`,"_blank","noopener");
+    });
+
+    // Admin dashboard: demo front-end access. Change the password before publishing.
+    const ADMIN_PASSWORD = "kings2025";
+    document.getElementById("adminTrigger").addEventListener("click",()=>{
+      openModal("Altitude Kings · Team",`<div class="admin-login"><p>Sign in to manage your website content and review booking enquiries.</p><form id="adminLogin" class="form-field"><label for="adminPassword">Dashboard password</label><input id="adminPassword" type="password" placeholder="Enter password" required><button class="btn" type="submit">Open dashboard <span>↗</span></button><small style="color:#8a8d86">Demo password: <b>kings2025</b></small></form></div>`);
+    });
+    let activeAdminTab="treks";
+    document.addEventListener("submit",e=>{
+      if(e.target.id==="adminLogin"){
+        e.preventDefault();
+        if(document.getElementById("adminPassword").value===ADMIN_PASSWORD){renderAdmin("treks");}
+        else toast("That password doesn't match.");
+      }
+      if(e.target.id==="adminEditor"){e.preventDefault();saveAdminItem(e.target);}
+    });
+    document.addEventListener("click",e=>{
+      if(e.target.matches("[data-admin-tab]")){renderAdmin(e.target.dataset.adminTab);}
+      if(e.target.matches("[data-delete]")){deleteAdminItem(e.target.dataset.delete,e.target.dataset.id);}
+      if(e.target.matches("#adminLogout")){openModal("Altitude Kings · Team",`<div class="admin-login"><p>Sign in to manage your website content and review booking enquiries.</p><form id="adminLogin" class="form-field"><label for="adminPassword">Dashboard password</label><input id="adminPassword" type="password" placeholder="Enter password" required><button class="btn" type="submit">Open dashboard <span>↗</span></button><small style="color:#8a8d86">Demo password: <b>kings2025</b></small></form></div>`);}
+    });
+    function renderAdmin(tab) {
+      activeAdminTab=tab;
+      const labels={treks:"Treks",expeditions:"Expeditions",upcoming:"Upcoming dates",gallery:"Gallery",bookings:"Bookings"};
+      let html=`<div class="admin-tabs">${Object.entries(labels).map(([k,v])=>`<button class="admin-tab ${tab===k?"active":""}" data-admin-tab="${k}">${v}${k==="bookings"&&bookings.length?` (${bookings.length})`:""}</button>`).join("")}</div>`;
+      if(tab==="bookings"){
+        html+=bookings.length?`<div class="booking-admin">${bookings.map(b=>`<article class="booking-admin-card"><strong>${escapeHTML(b.name||"Guest")}</strong> · ${escapeHTML(b.trip||"Adventure enquiry")}<br>☎ ${escapeHTML(b.phone||"")} &nbsp; ✉ ${escapeHTML(b.email||"")}<br>Date: ${escapeHTML(b.date||"Flexible")} · ${escapeHTML(b.people||"")}<br>${escapeHTML(b.message||"")}</article>`).join("")}</div>`:`<p style="color:#727971;font-size:12px">No booking requests saved yet.</p>`;
+      } else {
+        html+=adminEditorMarkup(tab);
+        html+=`<div class="admin-list">${adminItems(tab).map(item=>`<div class="admin-list-row"><span>${escapeHTML(item.name||item.alt||"Image")}<small>${escapeHTML(item.location||item.category||item.date||"")}</small></span><button data-delete="${tab}" data-id="${escapeHTML(item.id)}">Delete</button></div>`).join("")||`<small>No content yet.</small>`}</div>`;
+      }
+      html+=`<div style="padding-top:20px"><button class="admin-tab" id="adminLogout">Log out</button> <small style="color:#8a8d86">Content is stored in this browser.</small></div>`;
+      modalTitle.textContent="Website dashboard";modalContent.innerHTML=html;
+    }
+    function adminItems(tab){return {treks,expeditions,upcoming,gallery}[tab]||[];}
+    function adminEditorMarkup(tab) {
+      const field=(name,label,placeholder="",type="text",full=false)=>`<div class="form-field ${full?"full":""}"><label>${label}</label><input name="${name}" type="${type}" placeholder="${placeholder}" ${name==="name"?"required":""}></div>`;
+      let fields="";
+      if(tab==="treks") fields=field("name","Trek name","Trek name")+field("location","Location","Kashmir")+field("duration","Duration","3 days")+field("difficulty","Difficulty","Moderate")+field("altitude","Max altitude","3,500 m")+field("price","Price","₹5,000")+field("description","Description","A short description", "text",true)+field("image","Image URL or upload","https://…","url",true)+`<div class="form-field full"><label>Or upload an image</label><input name="upload" type="file" accept="image/*"></div>`;
+      if(tab==="expeditions") fields=field("name","Expedition type","Rock climbing")+field("icon","Icon","△")+field("description","Description","A short description","text",true);
+      if(tab==="upcoming") fields=field("name","Trek name","Kapran Sarbal")+field("date","Date","Sunday, 22 June")+field("duration","Duration","1 day")+field("price","Price","₹650")+field("seats","Available seats","4 Seats Left")+field("difficulty","Difficulty","Easy");
+      if(tab==="gallery") fields=`<div class="form-field"><label>Category</label><select name="category"><option>Treks</option><option>Mountaineering</option><option>Expeditions</option></select></div>`+field("alt","Photo description","Mountain sunrise")+field("image","Image URL","https://…","url",true)+`<div class="form-field full"><label>Or upload an image</label><input name="upload" type="file" accept="image/*"></div>`;
+      return `<form class="admin-editor" id="adminEditor" data-tab="${tab}">${fields}<div class="form-field full"><button class="btn btn-small" type="submit">Add to ${tab} <span>＋</span></button></div></form>`;
+    }
+    function saveAdminItem(form) {
+      const tab=form.dataset.tab;
+      const data=Object.fromEntries(new FormData(form).entries());
+      const file=form.querySelector('input[type="file"]')?.files?.[0];
+      const commit=imageData=>{
+        const item={...data,id:"ak"+Date.now()};
+        if(imageData)item.image=imageData;
+        delete item.upload;
+        if(tab==="treks")treks.unshift(item);
+        if(tab==="expeditions")expeditions.unshift(item);
+        if(tab==="upcoming")upcoming.unshift(item);
+        if(tab==="gallery")gallery.unshift(item);
+        save(tab);renderAll();renderAdmin(tab);toast("Website content updated.");
+      };
+      if(file){const reader=new FileReader();reader.onload=()=>commit(reader.result);reader.readAsDataURL(file);}
+      else commit(data.image||"");
+    }
+    function deleteAdminItem(tab,id) {
+      const keyMap={treks:"treks",expeditions:"expeditions",upcoming:"upcoming",gallery:"gallery"};
+      const key=keyMap[tab];if(!key)return;
+      const data={treks,expeditions,upcoming,gallery}[key].filter(item=>item.id!==id);
+      if(key==="treks")treks=data;if(key==="expeditions")expeditions=data;if(key==="upcoming")upcoming=data;if(key==="gallery")gallery=data;
+      save(key);renderAll();renderAdmin(tab);toast("Item removed.");
+    }
+  </script>
+</body>
+</html>
